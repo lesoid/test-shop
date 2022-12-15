@@ -27,7 +27,7 @@
             <li><NuxtLink to="/store"><strong>Store</strong></NuxtLink></li>
             </ul>
         </div>
-        <div class="content-main">
+        <div class="content-slot">
              <slot />
         </div>
     </div>
@@ -82,9 +82,18 @@
     /* content */
     .container-main{
         display: flex;
-         flex-direction: row;
+        /* flex-wrap: wrap; */
+         flex-direction: row; 
          background: #e4d3d0;
-         /* border:1px solid #131513; */
+         border:1px solid #131513;
+          
+    }
+    .content-slot{
+        /* position:absolute; */
+         display: flex;
+          flex-direction: row;
+       /* flex-wrap: wrap; */
+      flex: 1 1 100vh;
     }
      .munu-main{
          background: #d8a49b;
@@ -106,10 +115,8 @@
     .menu-ul>li a{
         text-decoration:none;
     }
-    .content-main{
-        flex: 1 0 100%;
-        border:1px solid #131513;
-    }
+    /* footer*/
+    
     
 
 </style>
