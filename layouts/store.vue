@@ -31,10 +31,18 @@
              <slot />
         </div>
     </div>
+    <footer>
+      <div>
+      <!-- <qq @increase-by="increaseCount" /> -->
+        <!-- <p>ttt {{typeof(increaseCount)}}</p> -->
+        <!-- <p>ttt {{increaseCount}}</p> -->
+      </div>
+      
+    </footer>
      </div>
 </template>
-<script>
-
+<script setup>
+ 
 </script>
 
 
@@ -116,7 +124,7 @@
         text-decoration:none;
     }
     /* footer*/
-    
+
     
 
 </style>

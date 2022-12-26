@@ -3,6 +3,7 @@
     <div class="img-box">
     <img :src="`${product.image}`" class="thumb" />
     </div>
+    <!-- <p id="descript" class="text-title">{{ product.title }}</p> -->
     <p id="descript" class="text-title">{{ product.title }}</p>
     <NuxtLink :to="`/products/${product.id}`">
       <p class="detal">View Details</p>

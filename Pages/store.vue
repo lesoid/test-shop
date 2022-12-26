@@ -1,17 +1,20 @@
 <template>
  
     <div class="container-card">
-      <div class="for-main" v-for="p in products" :key="p">
-        <ProductCard :product="p" />
+      <div class="for-main" v-for="p of products" :key="p">
+        
+        <ProductCard  :product="p" />
       
       </div>
     </div>
- 
+
 </template>
 
 <script setup>
+
   //  fetch the products
-  const { data: products } = await useFetch('https://fakestoreapi.com/products')
+  const { data:products } = await useFetch('https://fakestoreapi.com/products')
+
   useHead({
     title: 'Store ',
     meta: [
