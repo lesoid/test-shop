@@ -21,11 +21,26 @@
     </header>
     <div class="container-main">
         <div class="munu-main">
-            <ul class="menu-ul"><h3>Category</h3>
-            <li><NuxtLink to="/"><strong>Home</strong> </NuxtLink></li>
-            <li><NuxtLink to="/about"><strong>About</strong></NuxtLink></li>
-            <li><NuxtLink to="/store"><strong>Store</strong></NuxtLink></li>
-            </ul>
+       
+          <br>
+
+          <div>
+                  <input id="radio1" type="radio" value="all" v-model="category"> <label for="radio1">All </label>
+              </div>
+              <div>
+                  <input id="radio2" type="radio"  value="women's clothing" v-model="category" > <label for="radio2">Женская одежда </label>
+              </div>
+              <div>
+                <input  id="radio3" type="radio" value="men's clothing" v-model="category"><label for="radio3">Мужская одежда</label>
+              </div>
+              <div>
+                <input id="radio4" type="radio" value="electronics" v-model="category"> <label for="radio4">Электроника</label> 
+              </div>
+              <div>
+                <input id="radio5" type="radio" value="jewelery" v-model="category"> <label for="radio5">Бижутерия</label>
+               
+              </div>
+              <!-- <span>Выбрано: {{ choiceCat }}</span> -->
         </div>
         <div class="content-slot">
              <slot />
@@ -42,7 +57,15 @@
      </div>
 </template>
 <script setup>
- 
+
+let choiceCat = useCategory()
+   let category = ref(choiceCat)
+  // наблюдение за ref-ссылкой
+
+watch(category, (category) => {
+  choiceCat.value = category
+})
+
 </script>
 
 
@@ -88,6 +111,15 @@
     align-self: center;
     }
     /* content */
+    input[type='radio'],
+label {
+    cursor: pointer;
+}
+
+input[type='radio'] {
+    height: 15px;
+    width: 15px;
+}
     .container-main{
         display: flex;
         /* flex-wrap: wrap; */
@@ -104,6 +136,8 @@
       flex: 1 1 100vh;
     }
      .munu-main{
+      display: flex;
+      flex-direction: column;
          background: #d8a49b;
           display: flex;
            min-width: 149px;
