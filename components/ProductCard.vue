@@ -13,7 +13,14 @@
 </template>
 
 <script setup>
+
   const { product } = defineProps(['product'])
+ 
+  //  let countitems = usePageStore()
+
+
+ 
+
 </script>
 
 <style scoped>

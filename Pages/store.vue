@@ -2,28 +2,59 @@
  
     <div class="container-card">
       <div class="for-cart" v-for="p of products" :key="p">
-        <div class="for-main" v-if="choiceCat == 'all'||choiceCat == p.category"  >
-        <ProductCard   :product="p" />
+        <div class="for-main" v-if="choiceCat == 'all'||choiceCat == p.category"   >
+         <!-- <p>{{ p.id }}" " {{pageNow= count++ }}" "{{pageNow  }}</p>  -->
+        <ProductCard  :product="p" />
       </div>
       </div>
     </div>
 
 </template>
 
-<script setup>
+<script >
+export default {
+  data(){
+  return {
+    products : [{}],
+   pageNow : usePageStore(),
+   choiceCat : useCategory()
+  }
+},
+created: function(){
+ this.countPage()
+},
 
-let choiceCat = useCategory()
-  const { data:products } = await useFetch('https://fakestoreapi.com/products')
+methods:{
+ async countPage (page = this.pageNow){
+    if (page>0) {
+      const { data:products } = await useFetch('https://fakestoreapi.com/products')
+      this.products = products.value
+    } else {
+    console.log ("ELSE!!!")
+    }
+  // const { data:products } = await useFetch('https://fakestoreapi.com/products')},
+  
+ },
+},
 
+//  let pageNow = usePageStore()
+// let choiceCat = useCategory()
+//  let count = 1
+ 
+
+
+ setup (){
   useHead({
     title: 'Store ',
     meta: [
       { name: 'description', content: 'My Test site.'}
     ]
-  })
+  }),
 definePageMeta({
     layout: "store",
   })
+  }}
+
   </script>
 
   <style scoped>

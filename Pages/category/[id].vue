@@ -17,6 +17,7 @@
    
     <!-- <ProductDetails :product="product" /> -->
   </div>
+
   {{ id }}
     <p>Product</p>
     {{JSON.stringify (product) }}
@@ -56,6 +57,7 @@ align-self: center;
 
 
 <script setup>
+
   //const rout = useRoute()
   const { id } = useRoute().params
 switch (id) {

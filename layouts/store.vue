@@ -52,12 +52,21 @@
         <!-- <p>ttt {{typeof(increaseCount)}}</p> -->
         <!-- <p>ttt {{increaseCount}}</p> -->
       </div>
+      <div>
+  <nav>
+    <h2>{{ pageNow }}</h2>
+    <ul v-for="i in 5" :key="i">
+      <li>{{i}}</li>
+     
+    </ul>
+  </nav>
+</div>
       
     </footer>
      </div>
 </template>
 <script setup>
-
+let pageNow = usePageStore()
 let choiceCat = useCategory()
    let category = ref(choiceCat)
   // наблюдение за ref-ссылкой
