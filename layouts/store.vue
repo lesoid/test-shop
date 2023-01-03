@@ -140,7 +140,7 @@ input[type='radio'] {
     .content-slot{
         /* position:absolute; */
          display: flex;
-          flex-direction: row;
+          flex-direction:column;
        /* flex-wrap: wrap; */
       flex: 1 1 100vh;
     }

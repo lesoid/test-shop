@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "nuxt": "3.0.0"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "nuxt-web3.js": "^0.1.5"
   }
 }

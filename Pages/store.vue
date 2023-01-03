@@ -33,15 +33,8 @@ methods:{
     console.log ("ELSE!!!")
     }
   // const { data:products } = await useFetch('https://fakestoreapi.com/products')},
-  
  },
 },
-
-//  let pageNow = usePageStore()
-// let choiceCat = useCategory()
-//  let count = 1
- 
-
 
  setup (){
   useHead({
