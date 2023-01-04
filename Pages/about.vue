@@ -1,21 +1,18 @@
-<template>
- 
+<template> 
   <div class="container-card">
     <div class="for-cart" v-for="p of productsfiltr" :key="p">
       <div class="for-main"  >
        <!-- <p>{{ p.id }}" " {{pageNow= count++ }}" "{{pageNow  }}</p>  -->
       <ProductCard  :product="p" />
     </div>
-    </div>
-    
+    </div>  
   </div>
   <nav>
 
-<ul>{{ numPage }}
+<ul>
+  <!-- {{ numPage }} -->
   <li  v-for="i in amountPage" :key="i"> 
-    <button   @click="numPage=i"> {{ i }}</button> </li>
-  <!-- <li> <button   @click="numPage=1"> 1</button> </li>
-  <li> <button    @click="numPage=2" > 2</button></li> -->
+    <button   @click="transitionPage(i)"> {{ i }}</button> </li>
 </ul>
 </nav>
 <div id="v-model-select" class="demo">
@@ -24,9 +21,14 @@
     <option>2</option>
     <option>3</option>
     <option>5</option>
-    <option>100</option>
+    <option>10</option>
   </select>
-  <span>Выбрано: {{ selected }}</span><span>choiceCat = {{ choiceCat }}</span><span>Количество товара {{amountAllItems }}</span>
+  <br>
+  <span>Выбрано: {{ selected }}</span>
+  <br>
+  <span>Category = {{ choiceCat }}</span>
+  <br>
+  <span>Количество товара {{amountAllItems }}</span>
   <!-- <span>{{ comtest }}</span> -->
 </div>
 </template>
@@ -39,7 +41,7 @@ return {
   productsfiltr : [{}],
  pageNow : usePageStore(),
  choiceCat : useCategory(),
- numPage:2,
+ numPage:1,
  selected:5,//максимальное колличество товара на странице выбор
  amountAllItems:null,//колличество всего товара этой категории
 amountPage:1,//вычисленное количество страниц
@@ -53,6 +55,7 @@ await  this.getProdFilter()
 },
 watch:{
   async choiceCat(){ 
+  
     await this.choice()
   //  let tt = this.products.filter(qq =>"all"==this.choiceCat||qq.category==this.$data.choiceCat) 
   //    this.amountAllItems = tt.length
@@ -64,23 +67,23 @@ async selected() {
   await  this.getProdFilter()
 }
 },
-// computed:{
-//  comtest (){
-//   this.tt.length==0
-//   ?this.countPage().length 
-//   :100
-//  }
-// },
 
 methods:{
+  transitionPage(i){
+   this.numPage=i
+   this.pageNow=i
+   console.log(" transitionPage !!! i= "+i)
+   this.getProdFilter()
+  },
+
   async  getProdFilter(){
+    console.log(" getProdFilter() begin!!!  ")
  let prod=[];
   if(this.choiceCat !== 'all'){
   prod = this.products.filter(qq =>qq.category==this.choiceCat) 
-   console.log(" prod if !!!"+prod)
   }else{
      prod = this.products
-     console.log(" prod else !!!"+prod)
+   
   } 
  let i = 0;
  let arr=[];
@@ -89,11 +92,12 @@ methods:{
  while (i < 2000){
   if (i>= enougt ||prod.length == i){
     this.productsfiltr = arr
-  
-}else if(i>= propusk){
+    break;
+  }else if(i>= propusk){
   arr.push(prod[i])
-}
- i++;
+  // console.log("  getProdFilter() arr.push!!! "+prod[i].title)
+  }
+  i++;
  }
 
 },
@@ -106,28 +110,20 @@ async countPage (){
 
 },
 async  choice(){ 
+  this.numPage=1
+   this.pageNow=1
    let  tt = this.products.filter(qq =>"all"==this.choiceCat||qq.category==this.$data.choiceCat) 
    this.amountAllItems = tt.length
-console.log("!!!choice() "+  this.amountAllItems)
+// console.log("!!!choice() amountAllItems = "+  this.amountAllItems)
+// console.log("!!!choice() selected = "+  this.selected)
 this.getAmountPage()
-// console.log('choice(3) ')
-  // return tt.length
-   // console.log("tttee!!!"+JSON.stringify (this.products))
-
 },
+
   getAmountPage(){
   let ii=this.amountAllItems/this.selected
   let match1 = Math.ceil(ii)
-//   console.log('getAmountPage()!!! '+match1+' || typeof '+ typeof(match1))
-  
-//   // let match1 = Math.ceil(ii)
-//   console.log('getAmountPage(2)!!! '+match1)
   this.amountPage =  match1
-
-
-
- }
-  
+} 
 },
 
 setup (){
