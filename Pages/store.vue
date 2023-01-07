@@ -37,6 +37,7 @@ methods:{
 },
 
  setup (){
+
   useHead({
     title: 'Store ',
     meta: [
@@ -45,6 +46,7 @@ methods:{
   }),
 definePageMeta({
     layout: "store",
+    middleware: ["auth"]
   })
   }}
 

@@ -15,6 +15,10 @@
             </ul>
         </div>
         <div class="auth-head">
+              <div>
+                <strong>{{auth.isAuthenticated}}</strong>
+                  <strong>{{countvisit}}</strong>
+              </div>
                 <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink>
         </div>
     </nav>
@@ -66,6 +70,8 @@
      </div>
 </template>
 <script setup>
+const auth = useAuth();
+let countvisit = usePageVisitCount()
 let pageNow = usePageStore()
 let choiceCat = useCategory()
    let category = ref(choiceCat)

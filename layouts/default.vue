@@ -15,17 +15,23 @@
             </ul>
         </div>
         <div class="auth-head">
-                <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink>
+              <div><strong>{{auth}}</strong>
+               <strong>{{countvisit}}</strong>
+              </div>
+            <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink>
         </div>
     </nav>
     </header>
     <div class="container main">
-      <slot />
+      <slot></slot>
+    
+
     </div>
      </div>
 </template>
-<script>
-
+<script setup>
+const auth = useAuth();
+let countvisit = usePageVisitCount()
 </script>
 
 
