@@ -1,4 +1,7 @@
 <template>
+<Head>
+  <html lang="en"></html>
+</Head>
   <div class="container-layaut">
    <LayautHeader></LayautHeader>
     <div class="container-main">
@@ -9,6 +12,7 @@
     </div>
       <LayautFooter></LayautFooter>
      </div>
+ 
 </template>
 <script setup>
 let choiceCat = useCategory()
@@ -21,6 +25,7 @@ watch(category, (category) => {
 
 
 <style scoped>
+
 .container-layaut{
   display: flex;
           flex-direction:column;

@@ -60,23 +60,7 @@ align-self: center;
 
   //const rout = useRoute()
   const { id } = useRoute().params
-switch (id) {
-    case "women's clothing":
-        
-        break;
-    case "electronics":
-        
-        break;
-    case "jewelery":
-        
-        break;
-    case "men's clothing":
-        
-        break;
 
-    default:
-        break;
-}
   const uri = 'https://fakestoreapi.com/products/' + id
 
   //  fetch the products

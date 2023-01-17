@@ -1,0 +1,16 @@
+[
+    {
+        "id":1,
+        "title":"sviter",
+        "price": 120,
+        "counts": 2
+
+    },
+    {
+        "id":2,
+        "title":"kofta",
+        "price": 220,
+        "counts": 3
+
+    }
+]

@@ -15,8 +15,9 @@
               </ul>
           </div>
           <div class="auth-head">
-            <strong>{{auth}}</strong>
-               <strong>{{countvisit}}</strong>
+            <strong v-if="auth.isAuthenticated">Hi User</strong>
+            <strong v-else>Вы не авторизованы</strong>
+               <strong class="visit">{{countvisit}}</strong>
                   <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink>
           </div>
       </nav>
@@ -68,6 +69,9 @@
     margin-left: auto;
     margin-right: 30px;
     align-self: center;
+    }
+    .visit{
+        padding-left: 1em;
     }
 
 

@@ -1,4 +1,7 @@
 <template>
+     
+
+
   <div>
     <header class="header-def">
     <nav class="container-hed">
@@ -28,6 +31,7 @@
 
     </div>
      </div>
+ 
 </template>
 <script setup>
 const auth = useAuth();

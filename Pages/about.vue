@@ -129,12 +129,14 @@ this.getAmountPage()
 setup (){
 useHead({
   title: 'Store ',
+  lang:'en',
   meta: [
     { name: 'description', content: 'My Test site.'}
   ]
 }),
 definePageMeta({
   layout: "store",
+  middleware:["auth"]
 })
 }}
 
