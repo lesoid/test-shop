@@ -3,14 +3,15 @@
         "id":1,
         "title":"sviter",
         "price": 120,
-        "counts": 2
-
+        "counts": 2,
+        "email":"ttt@gmail.com"
     },
     {
         "id":2,
         "title":"kofta",
         "price": 220,
-        "counts": 3
+        "counts": 3,
+        "email":"zzz@gmail.com"
 
     }
 ]

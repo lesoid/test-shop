@@ -3,6 +3,7 @@
     <h2  :style="{color:contact?'red':'green'}">rrr</h2>
     <button :class="['bt',{active:contact}]" @click="contact = !contact" >DDD</button>
     <button @click="getCard">req</button>
+    <h6>{{ otvet }}</h6>
     <hr>
     <h3 v-for="i of otvet " :key="i.id">{{ i.title }}</h3>
     <!-- <form id="form-contact"  type="submit">
@@ -26,13 +27,16 @@
                   </div>
                   <button  type="submit">Submit</button>
     </form>
-  
+  <h6>{{ resy }}</h6>
 </template>
 
 <script >
+
+
 export default {
     data(){
     return{
+      resy:'',
          email:'',
        contact:false,  
       otvet:[{}] 
@@ -46,22 +50,23 @@ methods: {
     },
     async handleSubmit(){
         console.log('Values Submit'+this.email)
-        const { data:res, error } = await useFetch('/api/cart', {
+        const { data:resy, error } = await useFetch('/api/cart', {
       method: "post",
       body:{
-        em:this.email
+        email:this.email,
+        title:"bag",
+        id:3,
+        price:256,
+        count:6
       },
-      params:{
-        bod: this.email,
-      }
+      // params:{
+      //   bod: this.email,
+      // }
       
-    //   if (error) {
-    //   _error.value = error.value.data.error;
-    
-      
-    // }
+
     });
-    console.log('Values Submit 2'+res)
+    this.resy = resy
+    console.log('Values Submit 2'+resy)
     }
    
 },
