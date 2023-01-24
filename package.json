@@ -8,9 +8,11 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.0.0"
+    "nuxt": "3.0.0",
+    "prisma": "^4.9.0"
   },
   "dependencies": {
+    "@prisma/client": "^4.9.0",
     "assert": "^2.0.0",
     "nuxt-web3.js": "^0.1.5"
   }
