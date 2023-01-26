@@ -20,6 +20,7 @@
                <strong class="visit">{{countvisit}}</strong>
                   <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink>
           </div>
+          <User :isLoggedIn="auth" class="hidden md:block" />
       </nav>
       </header>
 </template>

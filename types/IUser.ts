@@ -1,12 +1,12 @@
 
 export interface IUser {
     id?: number
-    loginType?: string
-    password?: string
-    email?: string
-    name?: string
-    username: string
-    avatarUrl?: string
+    loginType?: string | null
+    password?: string | null
+    email?: string | null 
+    name?: string | null
+    username: string | null
+    avatarUrl?: string | null
     stripeCustomerId?: string | null
   }
   

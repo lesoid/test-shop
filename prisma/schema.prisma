@@ -13,7 +13,7 @@ datasource db {
 
 model User {
   id               Int            @id @default(autoincrement())
-  loginType        String?        @default("email")
+  loginType        String        @default("email")
   password         String?
   email            String?        @unique
   name             String?
