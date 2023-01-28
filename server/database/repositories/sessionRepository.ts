@@ -30,5 +30,5 @@ async function getUserByAuthToken(authToken: string): Promise<User | null> {
     where: {
       authToken: authToken,
     }
-  }).user()
+  }).user()//возвращаем таблицу user подключеную к таблице Session
 }

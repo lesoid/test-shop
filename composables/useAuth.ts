@@ -63,22 +63,24 @@ export async function registerWithEmail(
 
     return { hasErrors: false, loggedIn: true }
   } catch (error: any) {
+    console.log('!!! useAuth registerWithEmail !!! error '+JSON.stringify (error))
     return useErrorMapper(error.data.data)
   }
 }
 
-// export async function loginWithEmail(usernameOrEmail: string, password: string): Promise<FormValidation> {
-//   try {
-//     const result = await $fetch('/api/auth/login', { method: 'POST', body: { usernameOrEmail: usernameOrEmail, password: password } })
+export async function loginWithEmail(usernameOrEmail: string, password: string): Promise<FormValidation> {
+  try {
+    const result = await $fetch('/api/auth/login', { method: 'POST', body: { usernameOrEmail: usernameOrEmail, password: password } })
+console.log("!!! useAuth result = "+ result)
+    if (!result?.id) {
+      throw Error('something went wrong')
+    }
+    useState('user').value = result
+    console.log('!!! useAuth loginWithEmail '+JSON.stringify (result))
+    await useRouter().push('/')
 
-//     if (!result?.id) {
-//       throw Error('something went wrong')
-//     }
-//     useState('user').value = result
-//     await useRouter().push('/topics')
-
-//     return { hasErrors: false, loggedIn: true }
-//   } catch (error: any) {
-//     return useErrorMapper(error.data.data)
-//   }
-// }
+    return { hasErrors: false, loggedIn: true }
+  } catch (error: any) {
+    return useErrorMapper(error.data.data)
+  }
+}

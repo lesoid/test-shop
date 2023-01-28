@@ -12,6 +12,7 @@
               <li><NuxtLink to="/"><h3>Home</h3> </NuxtLink></li>
               <li><NuxtLink to="/about"><h3>About</h3></NuxtLink></li>
               <li><NuxtLink to="/store"><h3>Store</h3></NuxtLink></li>
+              <li><NuxtLink to="/authw"><h3>Auth2</h3></NuxtLink></li>
               </ul>
           </div>
           <div class="auth-head">

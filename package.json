@@ -15,12 +15,14 @@
   },
   "dependencies": {
     "@prisma/client": "^4.9.0",
+    "@sidebase/nuxt-parse": "^0.3.0",
     "@vueuse/core": "^9.11.1",
     "assert": "^2.0.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "nuxt-web3.js": "^0.1.5",
     "uuid": "^9.0.0",
+    "zod": "^3.20.2",
     "zod-error": "^1.1.1"
   }
 }

@@ -7,3 +7,4 @@ export default defineNuxtRouteMiddleware(() => {
     }
     return auth.value.isAuthenticated;
   });
+
