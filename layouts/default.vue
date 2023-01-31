@@ -3,8 +3,8 @@
 
 
   <div>
-    <header class="header-def">
-    <nav class="container-hed">
+    <!-- <header class="header-def"> -->
+    <!-- <nav class="container-hed">
         <div  class="font-bold">
             <NuxtLink to="/">
                 <img src="../static/surse/img/header/dree.JPG" alt="dree" >
@@ -17,14 +17,16 @@
             <li><NuxtLink to="/store"><h3>Store</h3></NuxtLink></li>
             </ul>
         </div>
+        <User  />
         <div class="auth-head">
-              <div><strong>{{auth}}</strong>
+              <div v-if="user"><strong>Hi {{user.name}}</strong><br>
                <strong>{{countvisit}}</strong>
               </div>
             <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink>
         </div>
-    </nav>
-    </header>
+    </nav> -->
+    <LayautHeader></LayautHeader>  
+  <!-- </header> -->
     <div class="container main">
       <slot></slot>
     
@@ -33,9 +35,11 @@
      </div>
  
 </template>
-<script setup>
-const auth = useAuth();
-let countvisit = usePageVisitCount()
+<script setup >
+// import {useUser} from "~/composables/useAuth";
+// const auth = useAuth();
+// let countvisit = usePageVisitCount()
+//  let user = ref (await useUser())
 </script>
 
 

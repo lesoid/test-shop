@@ -15,9 +15,10 @@ async function postLoginForm() {
   response = await loginWithEmail(usernameOrEmail.value, password.value)
   errors.value = response.errors
 }
-// definePageMeta({
-//   middleware: ["guest"]
-// })
+definePageMeta({
+  middleware: ["guest"],
+  layout:"registration"
+})
 </script>
 
 <template>
@@ -25,7 +26,7 @@ async function postLoginForm() {
     <div class="flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full">
         <div class="lg:flex mt-10">
-          <img class="mx-auto h-24 w-auto" src="/img/logo_clear_fsj.png" alt="full stack jack logo" />
+          <!-- <img class="mx-auto h-24 w-auto" src="/img/logo_clear_fsj.png" alt="full stack jack logo" /> -->
           <h1 class="py-9 text-center text-5xl font-extrabold text-gray-900 dark:text-gray-400">
             Full Stack Jack
           </h1>
@@ -44,8 +45,8 @@ async function postLoginForm() {
             </li>
           </ul>
         </div>
-        <form v-on:submit.prevent class="mt-8 space-y-6" action="#" method="POST">
-
+        <form v-on:submit.prevent class="mt-8 space-y-6" action="#" method="POST" @keyup.enter="postLoginForm">
+          <!-- @keyup.enter="postLoginForm  форма отправляется при нажатии на ENTER-->
           <div class="rounded-md shadow-sm -space-y-px mb-1">
             <div>
               <label for="email-address" class="sr-only">Username or Email</label>
@@ -62,11 +63,11 @@ async function postLoginForm() {
               :class="errors?.has('password') ? ' border-red-500' : ''" placeholder="Password" />
           </div>
         </form>
-        <button @click.prevent="postLoginForm"
-          class="mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+        <button @click.prevent="postLoginForm" 
+          class=" ">
+          <span class="">
             <!-- Heroicon name: solid/lock-closed -->
-            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg"
+            <svg class="" xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd"
                 d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"

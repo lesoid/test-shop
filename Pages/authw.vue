@@ -1,8 +1,8 @@
 <script setup>
 let contact1 = ref (false)
-definePageMeta({
-  layout: "store",
-})
+// definePageMeta({
+//   layout: "store",
+// })
 
 
 </script>

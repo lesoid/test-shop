@@ -5,6 +5,7 @@ export default defineNuxtRouteMiddleware(async(to) => {
   const user = await useUser()
   
   if (user !== null && user !== undefined) {
+    alert("auth Вы зарегистрированы "+JSON.stringify(user))
     return '/'
   }
 })

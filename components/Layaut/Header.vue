@@ -15,18 +15,24 @@
               <li><NuxtLink to="/authw"><h3>Auth2</h3></NuxtLink></li>
               </ul>
           </div>
+           <!-- <User  /> -->
           <div class="auth-head">
-            <strong v-if="auth.isAuthenticated">Hi User</strong>
-            <strong v-else>Вы не авторизованы</strong>
+            <User :auth="user !== null ? true : false" />
+            <strong v-if="user">Hi {{ user.name }}</strong>
+            <strong v-else style="color:brown">Гость</strong>
                <strong class="visit">{{countvisit}}</strong>
-                  <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink>
+                  <!-- <NuxtLink to="/auth"><h3>Вход</h3></NuxtLink> -->
           </div>
-          <User :isLoggedIn="auth" class="hidden md:block" />
+          
       </nav>
       </header>
 </template>
 
 <script setup>
+import {useUser} from "~/composables/useAuth";
+// const auth = useAuth();
+// let countvisit = usePageVisitCount()
+ let user = ref (await useUser())
  const auth = useAuth();
  let countvisit = usePageVisitCount()
 </script>

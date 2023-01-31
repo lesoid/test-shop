@@ -25,6 +25,13 @@ async function validateRegistration(key: string, value: string): Promise<InputVa
         key,
         hasError: false
     }
+    if (key == 'name') {
+        if (value.length < 1) {
+            check.hasError = true
+            check.errorMessage = `Name is not`
+        }
+      
+    }
 
     if (key == 'password') {
         if (value.length < 8) {
@@ -41,6 +48,12 @@ async function validateRegistration(key: string, value: string): Promise<InputVa
             check.hasError = true
             check.errorMessage = `Email is invalid or already taken`
         }
+        const regexp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+
+        if (value.search(regexp)== -1){
+            check.hasError = true
+            check.errorMessage = `Email not a correct entry` 
+        }
     }
 
     if (key == 'username') {
@@ -49,6 +62,10 @@ async function validateRegistration(key: string, value: string): Promise<InputVa
             check.usernameTaken = true
             check.hasError = true
             check.errorMessage = `Username is invalid or already taken`
+        }
+        if (value.length < 1) {
+            check.hasError = true
+            check.errorMessage = `UserName is not`
         }
     }
 

@@ -14,8 +14,8 @@ const standardAuthError = getMappedError('Authentication', 'Invalid Credentials'
 export default eventHandler(async (event: H3Event) => {
 
   try {
-    // const data = await readBody(event)
-    const data = await loginRequest(event)
+    const data = await readBody(event)
+    //const data = await loginRequest(event)
     const user = await getUserByEmail(data.usernameOrEmail)
 
     if (user === null) {

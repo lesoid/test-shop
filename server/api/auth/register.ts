@@ -11,8 +11,8 @@ import { makeSession } from '~~/server/app/services/sessionService';
 
 export default eventHandler(async (event: H3Event) => {
   try {
-   // const data = await readBody(event)
-   const data = await registerRequest(event)
+  const data = await readBody(event)
+  //  const data = await registerRequest(event)
     const validation = await validateUser(data)
 
     if (validation.hasErrors === true && validation.errors) {

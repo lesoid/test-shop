@@ -14,32 +14,36 @@
 <div :id="[{ hidd: hideActions }]">
     <ul   v-if="hideActions" class=" " >
       
-     <li  >
+     <li v-if="auth" >
         <a class="clogout " href="/">logout</a>
       </li>
 
-      <li >
+      <li v-if="!auth">
         <NuxtLink class="cregister" href="/register">Register</NuxtLink>
       </li>
 
-      <li >
+      <li v-if="!auth" >
         <NuxtLink class="clogin" href="/login">Login</NuxtLink>
       </li>
     </ul>
   </div>
   
-  <p>{{ hideActions }}</p>
+  <!-- <p>{{ hideActions }}</p> -->
 </div>
 </template>
 
 <script setup >
 import { ref } from "@vue/reactivity";
+import { boolean } from "zod";
  import { useAuth } from "~/composables/states";
 // import { onClickOutside } from '@vueuse/core'
 
 
 const logout = useAuth
-const hideActions = ref(true)
+const hideActions = ref(false)
+defineProps({
+  auth:boolean
+})
 
 </script>
 <style  scoped>

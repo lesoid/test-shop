@@ -16,7 +16,11 @@ const errors: Ref<Map<string, { message: InputValidation; }> | undefined> = ref(
 async function postRegisterForm() {
   response = await registerWithEmail(username.value, name.value, email.value, password.value);
   errors.value = response.errors
-};
+}
+definePageMeta({
+ middleware: ["guest"],
+  layout:"registration"
+})
 
 </script>
 <template>
@@ -24,7 +28,7 @@ async function postRegisterForm() {
     <div class="">
       <div class="">
         <div class="">
-          <img class="mx-auto h-24 w-auto" src="/img/logo_clear_fsj.png" alt="full stack jack logo" />
+          <!-- <img class="mx-auto h-24 w-auto" src="/img/logo_clear_fsj.png" alt="full stack jack logo" /> -->
           <h1 class="py-9 text-center text-5xl font-extrabold text-gray-900 dark:text-gray-400">
             Full Stack Jack
           </h1>
@@ -43,7 +47,7 @@ async function postRegisterForm() {
             </li>
           </ul>
         </div> 
-        <form v-on:submit.prevent class="" action="#" method="POST">
+        <form v-on:submit.prevent class="" action="#" method="POST" @keyup.enter="postRegisterForm">
           <input type="hidden" name="remember" value="true" />
           <div class="">
             <div>
