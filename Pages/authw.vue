@@ -1,5 +1,7 @@
 <script setup>
+const authUser =  useCookie('userInfo')
 let contact1 = ref (false)
+
 // definePageMeta({
 //   layout: "store",
 // })
@@ -10,6 +12,7 @@ let contact1 = ref (false)
 
 
 <template>
+    <h3>Cookie {{ authUser?.userInf }}</h3>
     <h2  :style="{color:contact1?'red':'green'}">rrr</h2>
    <h2 :class="['hhh',{ttt:contact1}]">AUTH@</h2> 
     <button @click="contact1=!contact1">activ</button>

@@ -14,7 +14,7 @@
 <div :id="[{ hidd: hideActions }]">
     <ul   v-if="hideActions" class=" " >
       
-     <li v-if="auth" >
+     <li v-if="auth" @click="logout">
         <a class="clogout " href="/">logout</a>
       </li>
 
@@ -32,20 +32,32 @@
 </div>
 </template>
 
+
 <script setup >
 import { ref } from "@vue/reactivity";
-import { boolean } from "zod";
- import { useAuth } from "~/composables/states";
+import {useUser} from "~/composables/useAuth";
+import { userLogout } from "~/composables/useAuth";
+
+
+
+const logout = userLogout
+
+// import { boolean } from "zod";
+//  import { useAuth } from "~/composables/states";
 // import { onClickOutside } from '@vueuse/core'
+let auth = ref (await useUser())
 
-
-const logout = useAuth
 const hideActions = ref(false)
-defineProps({
-  auth:boolean
-})
+// defineProps({
+//   auth:{
+//     type:boolean,
+//     default:false
+//   }
+
+// })
 
 </script>
+
 <style  scoped>
 #hidd{
   display: none; 

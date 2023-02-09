@@ -37,13 +37,13 @@ export async function authCheck(event: H3Event): Promise<boolean> {
     
     const hasAuthToken = isString(authToken)
 
-    if(!hasAuthToken) {
+    if(!hasAuthToken) {//если кукам вышел срок
         return false
     }
 
     const user  = await getUserBySessionToken(authToken)
 
-    if(user?.id) {
+    if(user?.id) {//если по токену найден Юзер
         return true
     }
 

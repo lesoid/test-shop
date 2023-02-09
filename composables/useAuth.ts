@@ -8,19 +8,32 @@ export const useAuthCookie = () => useCookie('auth_token')
 export async function useUser(): Promise<IUser | null> {
   const authCookie = useAuthCookie().value
   const user = useState<IUser | null>('user')
-
+    // console.log("!!! useAuth user "+JSON.stringify(user.value))
   if (authCookie && !user.value) {
 
     const cookieHeaders = useRequestHeaders(['cookie'])
-
+    // console.log("!!! useUser cookieHeaders "+JSON.stringify(cookieHeaders))
     const { data } = await useFetch<IUser>(`/api/auth/getByAuthToken`, {
+      
       headers: cookieHeaders as HeadersInit,
     })
-
+    // console.log("!!! useUser data "+JSON.stringify(data))
     user.value = data.value
   }
-
-  return user.value
+  // try {
+  //   if (process.client) {
+    //  localStorage.clear()
+    // sessionStorage.setItem('to', 'Go');
+    //  localStorage.setItem('to', 'Go')
+  //     console.log("!!! useAuth localStorage.name client "+localStorage.getItem("name"))
+  //     console.log("!!! useAuth sessionStorage.name client "+sessionStorage.getItem("to"))
+  //     }else{
+  //     console.log("!!! useAuth localStorage.name  client 2")
+  //   }
+  // } catch (error) {
+  //   console.log("!!! useAuth localStorage.name error "+error)
+  // }
+ return user.value
 }
 
 export async function useLoggedIn() {
@@ -71,12 +84,27 @@ export async function registerWithEmail(
 export async function loginWithEmail(usernameOrEmail: string, password: string): Promise<FormValidation> {
   try {
     const result = await $fetch('/api/auth/login', { method: 'POST', body: { usernameOrEmail: usernameOrEmail, password: password } })
-console.log("!!! useAuth result = "+ result)
+
     if (!result?.id) {
       throw Error('something went wrong')
     }
     useState('user').value = result
+    const userAuth = useCookie(
+      'userInfo',
+      {
+        default: () => ({ userInf:"" }),
+        maxAge:180
+      }
+    )
+   if ( userAuth.value &&  userAuth.value !== null) {
+    if (result.name !== null){ 
+      userAuth.value = { userInf:result.name }
+    }else {
+       throw Error('something went wrong')}
+    }
     console.log('!!! useAuth loginWithEmail '+JSON.stringify (result))
+    console.log('!!! useAuth loginWithEmail cookie '+JSON.stringify (userAuth))
+   
     await useRouter().push('/')
 
     return { hasErrors: false, loggedIn: true }

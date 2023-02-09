@@ -6,7 +6,7 @@
     <!-- <p id="descript" class="text-title">{{ product.title }}</p> -->
     <p id="descript" class="text-title">{{ product.title }}</p>
   <!-- <NuxtLink :to="`/products/${product.id}`"> -->
-      <NuxtLink :to="`/category/${product.id}`">
+      <NuxtLink :to="`/item/${product.id}`">
       <p class="detal">View Details</p>
     </NuxtLink>
   </div>
