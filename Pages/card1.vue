@@ -1,7 +1,8 @@
 <template>
-    <button @click="getTov">card</button>
+    <!-- <button @click="getTov">card</button> -->
     <p>res {{product?.title }}</p>
     <p v-if="product">res2 {{product?.description }}</p>
+    <Card></Card>
 </template>
 <script lang="ts">
 
@@ -13,6 +14,9 @@ import {defineComponent} from "vue"
     return {
       product:<IProduct>{}
     }
+  },
+  created: function(){
+    this.getTov()
   },
 methods:{
   async  getTov() {
