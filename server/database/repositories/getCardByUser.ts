@@ -1,5 +1,6 @@
 import prisma from "~/server/database/client";
- //import { ICard } from "~~/types/ICard";
+
+ import { ICard } from "~~/types/ICard";
 
 export async function getCardByUser( username: string): Promise<ICard[] | null> {
     return prisma.user.findUnique({
