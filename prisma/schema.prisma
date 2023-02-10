@@ -24,14 +24,7 @@ model User {
   stripeCustomerId String?
 
 }
-model Category {
-  id                 Int                  @id @default(autoincrement())
-  name               String               @unique
-  url                String               @unique
-  image              String?
-  accentColor        String?
 
-}
 
 model Session {
   id        Int       @id @default(autoincrement())
@@ -44,7 +37,15 @@ model Session {
 }
 
 
-
+model Category {
+  id                 Int                  @id @default(autoincrement())
+  name               String               @unique
+  url                String               @unique
+  image              String?
+  accentColor        String?
+  card               Card[]
+ cardId             Int 
+}
 
 
 
@@ -55,7 +56,9 @@ model Card {
   showName      Boolean?
   url           String?         
   image         String?
-  codproduct    Int?       
+  codproduct    Int?    
+  category      Category    @relation(fields: [categoryId], references: [id])
+  categoryId     Int
   user          User           @relation(fields: [userId], references: [id])
   userId        Int
 }

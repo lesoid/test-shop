@@ -29,7 +29,7 @@
   <!-- </header> -->
     <div class="container main">
       <slot></slot>
-    
+    <nuxt/>
 
     </div>
      </div>

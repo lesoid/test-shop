@@ -1,30 +1,53 @@
-<template><div>
-    <button @click="getTov">card</button>
-    <p>res {{pr }}</p>
-    <p v-if="pr">res2 {{pr}}</p>
-  </div>
+<template>
+  <!-- <button @click="getTov">card</button> -->
+  <p>res {{product?.title }}</p>
+  <p v-if="product">res2 {{product?.description }}</p>
+  <Card></Card>
 </template>
-<script setup lang="ts">
- import {getProd} from "~~/composables/getOneProduct"
- let product: IProduct 
-const pr =ref( useState<IProduct | null>("prod"))
+<script lang="ts">
 
- //console.log("!!! Card Card "+JSON.stringify( product))
- //let prod: IProduct = ref(product: IProduct)
- //product = ref():IProduct 
- async function getTov() {
-   try {
-    console.log("!!! Card START ")
-    product = await getProd()
-    console.log("!!! Card response "+ product)
-    console.log("!!! Card response "+JSON.stringify( product))
-    product.id = 5
-   } catch (error) {
-    console.log("!!! Card error "+error)
-   }
-   useState('prod').value = product
-   console.log("!!! Card Fin ")
-  return product
+import {getProd} from "~~/composables/getOneProduct"
+import {defineComponent} from "vue"
+export default defineComponent({
+
+data() {
+  return {
+    product:<IProduct>{}
+  }
+},
+created: function(){
+  this.getTov()
+},
+methods:{
+async  getTov() {
+ try {
+//  console.log("!!! Card START ")
+ const product = await getProd()
+ // console.log("!!! Card response "+ product)
+ // console.log("!!! Card response "+JSON.stringify( product))
+ this.product = product
+ } catch (error) {
+console.log("!!! Card error "+error)
+ }
+ 
+// console.log("!!! Card Fin ")
+// return product
 }
+
+},
+
+setup (){
+useHead({
+title: 'CarD1 ',
+meta: [
+  { name: 'description', content: 'My Test site Card.'}
+]
+}),
+definePageMeta({
+layout: "store",
+})
+}
+})
+
 
 </script>
