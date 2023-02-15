@@ -8,13 +8,13 @@ export const useAuthCookie = () => useCookie('auth_token')
 export async function useUser(): Promise<IUser | null> {
   const authCookie = useAuthCookie().value
   const user = useState<IUser | null>('user')
-    // console.log("!!! useAuth user "+JSON.stringify(user.value))
+  // console.log("!!! useAuth user "+JSON.stringify(user.value))
   if (authCookie && !user.value) {
 
     const cookieHeaders = useRequestHeaders(['cookie'])
     // console.log("!!! useUser cookieHeaders "+JSON.stringify(cookieHeaders))
     const { data } = await useFetch<IUser>(`/api/auth/getByAuthToken`, {
-      
+
       headers: cookieHeaders as HeadersInit,
     })
     // console.log("!!! useUser data "+JSON.stringify(data))
@@ -22,9 +22,9 @@ export async function useUser(): Promise<IUser | null> {
   }
   // try {
   //   if (process.client) {
-    //  localStorage.clear()
-    // sessionStorage.setItem('to', 'Go');
-    //  localStorage.setItem('to', 'Go')
+  //  localStorage.clear()
+  // sessionStorage.setItem('to', 'Go');
+  //  localStorage.setItem('to', 'Go')
   //     console.log("!!! useAuth localStorage.name client "+localStorage.getItem("name"))
   //     console.log("!!! useAuth sessionStorage.name client "+sessionStorage.getItem("to"))
   //     }else{
@@ -33,7 +33,7 @@ export async function useUser(): Promise<IUser | null> {
   // } catch (error) {
   //   console.log("!!! useAuth localStorage.name error "+error)
   // }
- return user.value
+  return user.value
 }
 
 export async function useLoggedIn() {
@@ -66,7 +66,7 @@ export async function registerWithEmail(
   try {
     const data = await $fetch('/api/auth/register', {
       method: 'POST',
-      body:  { username, name, email, password }
+      body: { username, name, email, password }
     })
 
     if (data) {
@@ -76,7 +76,7 @@ export async function registerWithEmail(
 
     return { hasErrors: false, loggedIn: true }
   } catch (error: any) {
-    console.log('!!! useAuth registerWithEmail !!! error '+JSON.stringify (error))
+    console.log('!!! useAuth registerWithEmail !!! error ' + JSON.stringify(error))
     return useErrorMapper(error.data.data)
   }
 }
@@ -92,19 +92,20 @@ export async function loginWithEmail(usernameOrEmail: string, password: string):
     const userAuth = useCookie(
       'userInfo',
       {
-        default: () => ({ userInf:"" }),
-        maxAge:180
+        default: () => ({ userInf: "" }),
+        maxAge: 180
       }
     )
-   if ( userAuth.value &&  userAuth.value !== null) {
-    if (result.name !== null){ 
-      userAuth.value = { userInf:result.name }
-    }else {
-       throw Error('something went wrong')}
+    if (userAuth.value && userAuth.value !== null) {
+      if (result.name !== null) {
+        userAuth.value = { userInf: result.name }
+      } else {
+        throw Error('something went wrong')
+      }
     }
-    console.log('!!! useAuth loginWithEmail '+JSON.stringify (result))
-    console.log('!!! useAuth loginWithEmail cookie '+JSON.stringify (userAuth))
-   
+    console.log('!!! useAuth loginWithEmail ' + JSON.stringify(result))
+    console.log('!!! useAuth loginWithEmail cookie ' + JSON.stringify(userAuth))
+
     await useRouter().push('/')
 
     return { hasErrors: false, loggedIn: true }

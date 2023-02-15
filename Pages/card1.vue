@@ -8,6 +8,7 @@
 
 import {getProd} from "~~/composables/getOneProduct"
 import {defineComponent} from "vue"
+import { IProduct } from "~~/types/IProduct";
   export default defineComponent({
 
   data() {

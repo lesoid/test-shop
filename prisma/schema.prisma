@@ -50,8 +50,8 @@ model Card {
   id            Int             @id @default(autoincrement())
   amount        Int             @default(0)
   show          Boolean?
-  prod         Product        @relation(fields: [prodId], references: [id])
-  prodId       Int           
+  product         Product?        @relation(fields: [prodId], references: [id])
+  prodId       Int?           
   user          User           @relation(fields: [userId], references: [id])
   userId        Int
 }
@@ -59,16 +59,16 @@ model Card {
 model  Product {
   id            Int             @id @default(autoincrement())
   title         String          @unique
-  amount        Int             @default(0)
-  price         Int             @default(0)
+  amount        Int            @default(0)
+  price         Float          @default(0)
   codeproduct   Int             @unique
   url           String? 
   image         String?
-  description   String?
+  description   String?          @db.VarChar(500)
   rate          Int             @default(0)
   // category      String
-   category      Category        @relation(fields: [categoryId], references: [id])
-   categoryId    Int
+   category      Category?        @relation(fields: [categoryName], references: [name])
+   categoryName   String?
   card          Card[]
 }
 

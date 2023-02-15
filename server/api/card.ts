@@ -10,17 +10,18 @@
 // }
 import { getMappedError } from '~~/server/app/errors/errorMapper';
 import { sendError, H3Event,readBody } from "h3"
-import { getCardByUser } from '~/server/database/repositories/getCardByUser';
+import { getCardById } from '~/server/database/repositories/getCardById';
 
 const standardAuthError = getMappedError('Authentication', 'Invalid Credentials')
 
 export default eventHandler(async (event: H3Event) =>  {
   const data = await readBody(event)
-  if (data.username === null) {
-    console.log("!!! api/card data.username === null")
+  if (data.id === null) {
+    console.log("!!! api/card data.id === null")
     return sendError(event, createError({ statusCode: 401, data: standardAuthError }))
   }
-console.log("!!! api/card data.username"+data.username)
-  const card = await getCardByUser(data.username)
+//console.log("!!! api/card data.id"+data.id)
+  const card = await getCardById(data.id)
+  //console.log("!!! api/card data.id"+JSON.stringify(card))
   return card
 })

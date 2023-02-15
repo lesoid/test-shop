@@ -4,7 +4,7 @@ export interface ICard  {
     id: number
     amount:  number| null
     show? :boolean| null
-    user: User
-    product : Product
-   
+    product? : Product| null
+     user: User
+     userId:number
    }
