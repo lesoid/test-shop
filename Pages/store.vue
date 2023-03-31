@@ -138,7 +138,7 @@ useHead({
   lang:'en',
   meta: [
     { name: 'description', content: 'My Test site.'}
-  ]
+  ],
 }),
 definePageMeta({
   layout: "store",

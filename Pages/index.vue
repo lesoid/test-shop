@@ -1,11 +1,11 @@
 <template>
     <h1>Index</h1>
-    <h2  :style="{color:contact?'red':'green'}">rrr</h2>
+    <!-- <h2  :style="{color:contact?'red':'green'}">rrr</h2>
     <button :class="['bt',{active:contact}]" @click="contact = !contact" >DDD</button>
     <button @click="getCard">req</button>
     <h6>{{ otvet }}</h6>
     <hr>
-    <h3 v-for="i of otvet " :key="i.id">{{ i.title }}</h3>
+    <h3 v-for="i of otvet " :key="i.id">{{ i.title }}</h3> -->
     <!-- <form id="form-contact"  type="submit">
         <h3>Введите email</h3>
         <div>
@@ -15,8 +15,8 @@
              v-model="email"
              >
         </div> -->
-        <form @submit.prevent="handleSubmit">
-                  <!-- Email input -->
+        <!-- <form @submit.prevent="handleSubmit">
+                Email input 
                   <div class="m4">
                     <input
                       type="text"
@@ -27,7 +27,7 @@
                   </div>
                   <button  type="submit">Submit</button>
     </form>
-  <h6>{{ resy }}</h6>
+  <h6>{{ resy }}</h6> -->
 </template>
 
 <script >

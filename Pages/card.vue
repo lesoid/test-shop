@@ -29,9 +29,6 @@ async  getTov() {
  } catch (error) {
 console.log("!!! Card error "+error)
  }
- 
-// console.log("!!! Card Fin ")
-// return product
 }
 
 },
@@ -39,9 +36,9 @@ console.log("!!! Card error "+error)
 setup (){
 useHead({
 title: 'CarD1 ',
-meta: [
-  { name: 'description', content: 'My Test site Card.'}
-]
+// meta: [
+//   { name: 'description', content: 'My Test site Card.'}
+// ]
 }),
 definePageMeta({
 layout: "store",
