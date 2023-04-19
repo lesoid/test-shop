@@ -25,12 +25,13 @@
           >
           <div class="card__price">
             <div class="card__price-actual">{{ i.product?.price }} $</div>
+            <!-- <div class="card__price-actual">id {{ i.id }} $</div> -->
           </div>
         </div>
         <div class="card__control">
           <div class="counter">
             <button
-            @click="deiterateCount"
+            @click="iterateCount(i.id, i.amount,-1)"
               class="counter__btn counter__btn_minus js-counter-minus"
               type="button"
             >
@@ -45,7 +46,7 @@
             />
 
             <button
-            @click="iterateCount"
+            @click="iterateCount(i.id, i.amount,1)"
               class="counter__btn counter__btn_plus js-counter-plus"
               type="button"
             >
@@ -320,7 +321,7 @@ a {
 <script lang="ts">
 import { IUser } from "~/types/IUser";
 import { defineComponent } from "vue";
-import { getCard } from "~/composables/useCard";
+import { getCard ,updateCard} from "~/composables/useCard";
 import { ICard } from "~~/types/ICard";
 import { IProduct } from "~~/types/IProduct";
 import { number } from "zod";
@@ -348,11 +349,11 @@ export default defineComponent({
             let card = await getCard(user.value.id);
             if (card) {
               this.cardG = card;
-              console.log(
-                "!!!Card components JSON  image" +
-                  JSON.stringify(card[1].product)
-              );
-              console.log("!!!Card components JSON " + JSON.stringify(card));
+              // console.log(
+              //   "!!!Card components JSON  image" +
+              //     JSON.stringify(card[1].product)
+              // );
+              // console.log("!!!Card components JSON " + JSON.stringify(card));
             }
           }
         }
@@ -363,7 +364,12 @@ export default defineComponent({
       // console.log("!!! Card Fin ")
       // return product
     },
-   async iterateCount(){},
+   async iterateCount(y:number,u:number|null,z:number){
+    if (u == null)return alert(" func iterateCount -- Count Null")
+    let card = await updateCard(y , u + z);
+    this.getT()
+    return card
+   },
    async deiterateCount(){}
   },
   // async setup() {
