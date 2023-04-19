@@ -8,7 +8,8 @@ export default defineNuxtConfig({
         title: 'title',
         charset: 'utf-8',
         meta: [],
-        link: [],
+        link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }]
+
     }
 },
     nitro: {

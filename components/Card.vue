@@ -30,6 +30,7 @@
         <div class="card__control">
           <div class="counter">
             <button
+            @click="deiterateCount"
               class="counter__btn counter__btn_minus js-counter-minus"
               type="button"
             >
@@ -44,6 +45,7 @@
             />
 
             <button
+            @click="iterateCount"
               class="counter__btn counter__btn_plus js-counter-plus"
               type="button"
             >
@@ -361,6 +363,8 @@ export default defineComponent({
       // console.log("!!! Card Fin ")
       // return product
     },
+   async iterateCount(){},
+   async deiterateCount(){}
   },
   // async setup() {
 
