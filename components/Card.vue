@@ -25,7 +25,7 @@
           >
           <div class="card__price">
             <div class="card__price-actual">{{ i.product?.price }} $</div>
-            <!-- <div class="card__price-actual">id {{ i.id }} $</div> -->
+          <div class="card__price-actual"> -id {{ i.id }}</div> 
           </div>
         </div>
         <div class="card__control">
@@ -73,7 +73,7 @@
       </div>
       <div
         class="card__options bg"
-        
+        @click="deliteProdFromCart(i.id)"
       >
         <a href="#" class="card__options_a">
           <svg
@@ -321,7 +321,7 @@ a {
 <script lang="ts">
 import { IUser } from "~/types/IUser";
 import { defineComponent } from "vue";
-import { getCard ,updateCard} from "~/composables/useCard";
+import { getCard ,updateCard,delFromCart} from "~/composables/useCard";
 import { ICard } from "~~/types/ICard";
 import { IProduct } from "~~/types/IProduct";
 import { number } from "zod";
@@ -370,7 +370,11 @@ export default defineComponent({
     this.getT()
     return card
    },
-   async deiterateCount(){}
+   async deliteProdFromCart(idProdCart:number){
+    let card = await delFromCart(idProdCart)
+    this.getT()
+    return card
+   }
   },
   // async setup() {
 

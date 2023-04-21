@@ -12,13 +12,13 @@
         <h2>{{product.title  }}</h2>
         <strong>{{ product.description }}</strong>
         <h4>{{ product.price }} <strong> $</strong></h4>
-        <button >Buy</button>
+        <button  @click="Buy">Buy</button>
     </div>
    
     <!-- <ProductDetails :product="product" /> -->
   </div>
 
-  {{ id }}
+  {{ id }}{{ user.id }}
     <p>Product</p>
     {{JSON.stringify (product) }}
 </template>
@@ -57,7 +57,9 @@ align-self: center;
 
 
 <script setup>
+import {useUser} from "~/composables/useAuth";
 
+ let user = ref (await useUser())
   //const rout = useRoute()
   const { id } = useRoute().params
 
@@ -68,6 +70,9 @@ align-self: center;
 
   if (!product.value) {
     throw createError({ statusCode: 404, statusMessage: 'Product not found' })
+  }
+  function Buy(){
+    addToCard(product.value.id, user.value.id)
   }
 
   // definePageMeta({
